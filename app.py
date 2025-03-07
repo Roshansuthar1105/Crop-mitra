@@ -31,7 +31,7 @@ def predict():
     crop_name = prediction[0]  # Get the predicted crop name
     # Get user-selected language (default to English)
     language = request.form.get('language', 'english')
-    crop_name="coffee"
+    # crop_name="coffee"
     # Get crop details inthe selected language
     crop_info = crop_data['crops'].get(crop_name, {})
     crop_details = crop_info.get('details', {}).get(language, "Details not available in this language.")
@@ -39,7 +39,7 @@ def predict():
     print(crop_name,language,crop_details)
     # Render the result on the HTML page
     return render_template('index.html', 
-                           prediction_text=f'The predicted crop is: {crop_name}',
+                           prediction_text=f'{crop_name}',
                            crop_details=crop_details,
                            input_values=int_features,
                            selected_language=language)

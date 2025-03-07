@@ -213,7 +213,7 @@ input:focus {
   box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.4),
     0 1px 1px rgba(255, 255, 255, 0.2);
 } */
-body {
+/* body {
   font-family: 'Arimo', sans-serif;
   background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
   margin: 0;
@@ -289,4 +289,147 @@ button:hover {
   margin-top: 20px;
   font-size: 14px;
   color: #777;
+} */
+body {
+  font-family: "Arimo", sans-serif;
+  color: white;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background: #17202a;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.login {
+  background: #17202a;
+  padding: 40px;
+  border-radius: 15px;
+  /* max-width: 800px; */
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  height: 100%;
+}
+
+.prediction-result,
+.form-div {
+  flex: 1;
+  min-width: 300px;
+  background: #202a34;
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 300px;
+  max-width: 600px;
+  height: 800px;
+}
+h1 {
+  /* font-family: 'Pacifico', cursive; */
+  color: #22c55e;
+  margin-bottom: 20px;
+  width: 100%;
+  font-size: 40px;
+}
+.form-div h2,
+.prediction-result h2{
+  color: #22c55e;
+  margin-bottom: 40px;
+  width: 100%;
+  font-size: 32px;
+  text-align: start;
+}
+button {
+  background: #22c55e;
+  color: black;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #1ead53;
+}
+
+.crop-name {
+  color: #22c55e;
+  text-transform: capitalize;
+}
+
+.prediction-result  {
+  align-items: start;
+  text-align: start;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.prediction-result h2 {
+  font-family: "Hind", sans-serif;
+  color: #22c55e;
+  margin-bottom: 10px;
+  font-size: 25px;
+}
+
+.prediction-result p strong {
+  color: #22c55e;
+}
+.prediction-result p {
+  font-size: 22px;
+  color: white;
+}
+.list-items {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 5px;
+}
+.list-items li {
+  list-style: none;
+  font-size: 23px;
+  color: #fff;
+}
+.input-values {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #bbb;
+}
+.input-group {
+  display: flex;
+  margin-bottom: 15px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+input[type="number"],
+select {
+  width: 70%;
+  padding: 12px;
+  /* margin: 10px 0; */
+  border: 1px solid #22c55e;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+  background: #202a34;
+  color: white;
+}
+select {
+  width: 100%;
+}
+label {
+  font-weight: bold;
+  font-size: 20px;
 }
