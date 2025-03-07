@@ -3,105 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌾 Crop Prediction Results</title>
+    <title>Prediction Results</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Arimo&family=Hind:wght@300&family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/result_style.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js Library -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amita:wght@400;700&family=Elsie+Swash+Caps:wght@400;900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&family=Playwrite+IS:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/result_style.css') }}">
 </head>
 <body>
-    <div class="container fade-in">
-        <h1>🌿 Crop Prediction Results</h1>
-        
+    <div class="container">
+        <div class="top-div" > <a href="/">⬅️ Go Back</a>
+            <h1>🌿 Predicted Crop: <span class="highlight">{{ prediction_text }}</span> 🌱</h1>
+        </div>
         <div class="result-box">
-            <a href="/" class="back-button">🔙 Predict Again</a>
-            <h2>🌾 Predicted Crop: <span class="highlight">{{ prediction_text }}</span></h2>
-            <p><strong>🌱 Crop Details ({{ selected_language }}):</strong> {{ crop_details }}</p>
+            <h2>🌍 Best Growing Conditions:</h2>
+            <p><strong>🪴 Soil:</strong> {{ crop_details.soil_type }}</p>
+            <p><strong>☀️ Climate:</strong> {{ crop_details.best_grown_in }}</p>
+            <p><strong>⏳ Growing Time:</strong> {{ crop_details.growing_time }}</p>
+            <p><strong>🍂 Best Season:</strong> {{ crop_details.best_season }}</p>
+            <p><strong>🌡️ Ideal Temperature:</strong> {{ crop_details.ideal_temperature }}</p>
         </div>
-        <div class="cls">
-        <!-- Display Input Values -->
-        <div class="input-values">
-            <h2>📊 Your Input Values</h2>
-            <table>
-                <tr>
-                    <th>Parameter</th>
-                    <th>Value</th>
-                </tr>
-                <tr><td>Nitrogen</td><td>{{ input_values[0] }}</td></tr>
-                <tr><td>Phosphorus</td><td>{{ input_values[1] }}</td></tr>
-                <tr><td>Potassium</td><td>{{ input_values[2] }}</td></tr>
-                <tr><td>Temperature</td><td>{{ input_values[3] }} °C</td></tr>
-                <tr><td>Humidity</td><td>{{ input_values[4] }}%</td></tr>
-                <tr><td>pH Level</td><td>{{ input_values[5] }}</td></tr>
-                <tr><td>Rainfall</td><td>{{ input_values[6] }} mm</td></tr>
-                <tr><td>Water Level</td><td>{{ input_values[7] }} cm</td></tr>
-            </table>
+        {% if crop_details.steps %}
+        <div class="result-box">
+            <h2>🛠️ Steps to Grow:</h2>
+            <ul>
+                {% for step in crop_details.steps %}
+                    <li>✅ {{ step }}</li>
+                {% endfor %}
+            </ul>
         </div>
+        {% endif %}
+        {% if crop_details.problems_and_solutions %}
+        <div class="result-box">
+            <h2>🚨 Common Problems & Solutions:</h2>
+            <ul>
+                {% for problem, solution in crop_details.problems_and_solutions.items() %}
+                    <li><strong>⚠️ {{ problem }}:</strong> {{ solution }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        {% if crop_details.tools_needed %}
+        <div class="result-box">
+            <h2>🛠️ Tools Needed:</h2>
+            <ul>
+                {% for tool in crop_details.tools_needed %}
+                    <li><strong>🔧 {{ tool }}</strong></li>
+                {% endfor %}
 
-        <!-- Graph Visualization -->
-        <div class="chart-container">
-            <h2>📉 Input Data Visualization</h2>
-            <canvas id="inputChart"></canvas>
+            </ul>
+        </div>
+        {% endif %}
+        <div class="result-box">
+            <h2>📊 Expected Yield & Market Price:</h2>
+            <p><strong>🌾 Yield:</strong> {{ crop_details.expected_yield }}</p>
+            <p><strong>💰 Market Price:</strong> {{ crop_details.market_price }}</p>
         </div>
     </div>
-    </div>
-
-    <script>
-        // Get input values from Flask
-        var labels = ["Nitrogen", "Phosphorus", "Potassium", "Temperature", "Humidity", "pH", "Rainfall", "Water Level"];
-        var values = {{ input_values | tojson }};
-    
-        // Get the chart context
-        var ctx = document.getElementById('inputChart').getContext('2d');
-    
-        // Create Pie Chart using Chart.js
-        var myChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Input Parameters',
-                    data: values,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.6)',
-                        'rgba(54, 162, 235, 0.6)',
-                        'rgba(255, 206, 86, 0.6)',
-                        'rgba(75, 192, 192, 0.6)',
-                        'rgba(153, 102, 255, 0.6)',
-                        'rgba(255, 159, 64, 0.6)',
-                        'rgba(233, 30, 99, 0.6)',
-                        'rgba(0, 188, 212, 0.6)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)',
-                        'rgba(233, 30, 99, 1)',
-                        'rgba(0, 188, 212, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'right', // Moves the legend to the right for better visibility
-                        labels: {
-                            font: {
-                                size: 14
-                            }
-                        }
-                    }
-                }
-            }
-        });
-    </script>
-    
 </body>
 </html>
