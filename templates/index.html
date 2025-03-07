@@ -17,45 +17,46 @@
 
         <!-- Main Input For Receiving Query to our ML -->
         <form action="{{ url_for('predict') }}" method="post">
+          <div class="input-group">
+            <label for="nitrogen">Nitrogen (mg/kg):</label>
+            <input type="number" min="0" max="140" step="1" name="nitrogen" id="nitrogen" placeholder="Enter Nitrogen (0 - 140 mg/kg)" required />
+        </div>
+        
         <div class="input-group">
-            <label for="nitrogen">Nitrogen:</label>
-            <input type="number" min="2" value="12" max="98" name="nitrogen" id="nitrogen" placeholder="Value for Nitrogen" required="required" />
-          </div>
-          
-          <div class="input-group">
-            <label for="phosphorus">Phosphorus:</label>
-            <input type="number" min="3" value="22" max="98" name="phosphorus" id="phosphorus" placeholder="Value for Phosphorus" required="required" />
-          </div>
-          
-          <div class="input-group">
-            <label for="pottasium">Potassium:</label>
-            <input type="number" min="3" value="22" max="98" name="pottasium" id="pottasium" placeholder="Value for Potassium" required="required" />
-          </div>
-          
-          <div class="input-group">
-            <label for="temperature">Temperature:</label>
-            <input type="number" min="10" value="22" max="40" name="temperature" id="temperature" placeholder="Value for Temperature" required="required" />
-          </div>
-          
-          <div class="input-group">
-            <label for="humidity">Humidity:</label>
-            <input type="number" min="1" value="22" max="100" name="humidity" id="humidity" placeholder="Value for Humidity" required="required" />
-          </div>
-          
-          <div class="input-group">
-            <label for="ph">PH:</label>
-            <input type="number" min="1" value="5" max="12" name="ph" id="ph" placeholder="Value for PH" required="required" />
-          </div>
-          
-          <div class="input-group">
-            <label for="rainfall">Rainfall:</label>
-            <input type="number" value="22" name="rainfall" id="rainfall" placeholder="Value for Rainfall" required="required" />
-          </div>
-          
-          <div class="input-group">
-            <label for="water_level">Water Level:</label>
-            <input type="number" value="22" name="water_level" id="water_level" placeholder="Value for Water Level" required="required" />
-          </div>
+            <label for="phosphorus">Phosphorus (mg/kg):</label>
+            <input type="number" min="5" max="145" step="1" name="phosphorus" id="phosphorus" placeholder="Enter Phosphorus (5 - 145 mg/kg)" required />
+        </div>
+        
+        <div class="input-group">
+            <label for="potassium">Potassium (mg/kg):</label>
+            <input type="number" min="5" max="205" step="1" name="potassium" id="potassium" placeholder="Enter Potassium (5 - 205 mg/kg)" required />
+        </div>
+        
+        <div class="input-group">
+            <label for="temperature">Temperature (°C):</label>
+            <input type="number" min="9" max="43" step="1" name="temperature" id="temperature" placeholder="Enter Temperature (9 - 43°C)" required />
+        </div>
+        
+        <div class="input-group">
+            <label for="humidity">Humidity (%):</label>
+            <input type="number" min="14" max="99" step="1" name="humidity" id="humidity" placeholder="Enter Humidity (14 - 99%)" required />
+        </div>
+        
+        <div class="input-group">
+            <label for="ph">pH Level:</label>
+            <input type="number" min="3" max="9" step="1" name="ph" id="ph" placeholder="Enter pH Level (3 - 9)" required />
+        </div>
+        
+        <div class="input-group">
+            <label for="rainfall">Rainfall (mm):</label>
+            <input type="number" min="20" max="298" step="1" name="rainfall" id="rainfall" placeholder="Enter Rainfall (20 - 298 mm)" required />
+        </div>
+        
+        <div class="input-group">
+            <label for="water_level">Water Level (cm):</label>
+            <input type="number" min="0" max="100" step="1" name="water_level" id="water_level" placeholder="Enter Water Level (0 - 100 cm)" required />
+        </div>
+        
           
       
       <!-- Language Selection Dropdown -->

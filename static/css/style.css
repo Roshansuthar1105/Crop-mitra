@@ -292,6 +292,7 @@ button:hover {
 } */
 body {
   font-family: "Arimo", sans-serif;
+  font-family: "Inter", sans-serif;
   color: white;
   margin: 0;
   padding: 0;
@@ -336,7 +337,8 @@ body {
 }
 h1 {
   /* font-family: 'Pacifico', cursive; */
-  color: #22c55e;
+  font-family: "Playwrite GB S", cursive;
+  color: #fff;
   margin-bottom: 20px;
   width: 100%;
   font-size: 40px;
@@ -417,7 +419,7 @@ button:hover {
 }
 input[type="number"],
 select {
-  width: 70%;
+  width: 50%;
   padding: 12px;
   /* margin: 10px 0; */
   border: 1px solid #22c55e;
@@ -426,6 +428,7 @@ select {
   box-sizing: border-box;
   background: #202a34;
   color: white;
+  
 }
 select {
   width: 100%;
@@ -433,4 +436,5 @@ select {
 label {
   font-weight: bold;
   font-size: 20px;
+  color: #1ead53;
 }
