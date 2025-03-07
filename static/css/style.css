@@ -331,7 +331,8 @@ body {
   border-radius: 10px;
   min-width: 300px;
   max-width: 600px;
-  height: 800px;
+  padding: 30px;
+  /* height: 800px; */
 }
 h1 {
   /* font-family: 'Pacifico', cursive; */

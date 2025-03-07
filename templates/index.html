@@ -5,38 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crop Prediction</title>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Arimo&family=Hind:wght@300&family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amita:wght@400;700&family=Elsie+Swash+Caps:wght@400;900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&family=Playwrite+IS:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
   <div class="login">
     <h1>Predict Crop Analysis</h1>
-
-    <!-- Display Prediction Result -->
-    {% if prediction_text %}
-    <div class="prediction-result">
-      <h2>Prediction Result</h2>
-      <p>The predicted crop is: <span class="crop-name" > {{ prediction_text }}</span> </p>
-      <p><strong>Crop Details:</strong> {{ crop_details }}</p>
-      <div class="input-values">
-        <h2>Input Values:</h2>
-        <ul class="list-items" >
-          <li>Nitrogen: {{ input_values[0] }}</li>
-          <li>Phosphorus: {{ input_values[1] }}</li>
-          <li>Pottasium: {{ input_values[2] }}</li>
-          <li>Temperature: {{ input_values[3] }}</li>
-          <li>Humidity: {{ input_values[4] }}</li>
-          <li>PH: {{ input_values[5] }}</li>
-          <li>Rainfall: {{ input_values[6] }}</li>
-          <li>Water Level: {{ input_values[7] }}</li>
-        </ul>
-      </div>
-    </div>
-    {% endif %}
     <div class="form-div" >
 
         <!-- Main Input For Receiving Query to our ML -->
         <form action="{{ url_for('predict') }}" method="post">
-        <h2>Form Data</h2>
         <div class="input-group">
             <label for="nitrogen">Nitrogen:</label>
             <input type="number" min="2" value="12" max="98" name="nitrogen" id="nitrogen" placeholder="Value for Nitrogen" required="required" />

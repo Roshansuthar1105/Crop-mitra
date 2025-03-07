@@ -1,0 +1,126 @@
+/* 🌿 General Styles */
+body {
+    /* font-family: 'Arimo', sans-serif; */
+    /* background: linear-gradient(to right, #9ba19b, #2E8B57); */
+    font-family: "Inter", sans-serif;
+    background: #202a34;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100dvh;
+}
+
+h1 {
+    /* font-family: 'Pacifico', cursive; */
+    font-family: "Playwrite GB S", cursive;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.container {
+    width: 80%;
+    /* margin: auto; */
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    backdrop-filter: blur(8px);
+}
+.cls{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.cls > *{
+    flex: 1;
+    max-height:400px;
+    min-width: 300px;
+}
+/* 🟢 Result Box */
+.result-box {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    color: #22c55e;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-transform: capitalize;
+    /* text-shadow: 1px 1px 5px rgba(255, 215, 0, 0.6); */
+}
+
+/* 📊 Input Values Table */
+.input-values table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.input-values th, .input-values td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.input-values th {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* 📉 Chart Styling */
+.chart-container {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* 🔙 Back Button */
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #22c55e;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+.back-button:hover {
+    background: #409660;
+    transform: scale(1.05);
+}
+
+/* ✨ Animations */
+.fade-in {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@media screen and (max-width:768px) {
+    body{
+        width: 100%;
+    }
+    .container{
+        margin: 5px;
+        width: 100%;
+    }
+}
